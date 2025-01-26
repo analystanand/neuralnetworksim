@@ -1,6 +1,6 @@
 # Neural Network Simulator
 
-A simple neural network simulation tool implemented in [programming language] that allows users to create, train, and experiment with various neural network architectures.
+A simple neural network simulation tool implemented in Python that allows users to create, train, and experiment with various neural network architectures.
 
 ## Features
 
@@ -26,7 +26,23 @@ pip install -r requirements.txt
 ## Usage
 
 ```python
-# Add basic usage example here
+from neuralnetworksim import NeuralNetwork
+
+# Create a neural network with 3 layers
+nn = NeuralNetwork([2, 3, 1])
+
+# Train the neural network with training data
+training_data = [
+    ([0, 0], [0]),
+    ([0, 1], [1]),
+    ([1, 0], [1]),
+    ([1, 1], [0])
+]
+nn.train(training_data, epochs=1000, learning_rate=0.1)
+
+# Make a prediction
+output = nn.predict([1, 0])
+print(f"Prediction for input [1, 0]: {output}")
 ```
 
 ## Project Structure
@@ -53,5 +69,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Contact
 
-Your Name - your.email@example.com
+Parma - parma@example.com
 Project Link: [https://github.com/yourusername/neuralnetworksim](https://github.com/yourusername/neuralnetworksim)
