@@ -2,6 +2,31 @@
 
 import numpy as np
 
+class NeuralNetwork:
+    def __init__(self, layer_sizes):
+        self.layer_sizes = layer_sizes
+        self.weights = []
+        self.biases = []
+        
+        for i in range(len(layer_sizes) - 1):
+            self.weights.append(np.random.randn(layer_sizes[i+1], layer_sizes[i]))
+            self.biases.append(np.random.randn(layer_sizes[i+1], 1))
+    
+    def forward(self, x):
+        activation = x
+        activations = [x]
+        
+        for w, b in zip(self.weights, self.biases):
+            z = np.dot(w, activation) + b
+            activation = self.sigmoid(z)
+            activations.append(activation)
+        
+        return activations
+    
+    @staticmethod
+    def sigmoid(z):
+        return 1.0 / (1.0 + np.exp(-z))
+
 def sigmoid(x):
     """Sigmoid activation function."""
     return 1 / (1 + np.exp(-x))
